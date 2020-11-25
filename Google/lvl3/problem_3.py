@@ -1,22 +1,57 @@
-
-def get_edge_list(map, rows, cols, NODES):
-    DELTAS = [(0, -1), (-1, 0), (0, 1), (1, 0)]
-    edge_list = []
-    # takes the map and turns into a graph represented by lists.
-    for i in range(len(map)):
-        for j in range(len(map[i])):
-            vertices = []
-            for delta in DELTAS:
-                row = i + delta[0]
-                col = j + delta[1]
-                if in_bounds(map, row, col):
-                    vertices.append(NODES[row][col])
-            edge_list.append(vertices)
-    return edge_list
+class Node:
+    def __init__(self, data, bomb_uses):
+        self.data = data
+        self.bomb_uses = bomb_uses
+        if data == 1:
+            self.wall = True
+        else:
+            self.wall = False
 
 
-def in_bounds(map, row, col):
-    return (0 <= row < len(map)) and (0 <= col < len(map[row]))
+class Graph:
+    def __init__(self, map):
+        self.map = map
+        self.rows = len(map)
+        self.cols = len(map[0])
+        self.nodes = [[(j + (i*self.cols)) for j in range(self.cols)] for i in range(self.rows)]
+    
+    def get_edge_list(self):
+        DELTAS = [(0, -1), (-1, 0), (0, 1), (1, 0)]
+        edge_list = []
+        # takes the map and turns into a graph represented by lists.
+        for i in range(len(self.map)):
+            for j in range(len(self.map[i])):
+                vertices = []
+                for delta in DELTAS:
+                    row = i + delta[0]
+                    col = j + delta[1]
+                    if self.in_bounds(row, col):
+                        vertices.append(self.nodes[row][col])
+                edge_list.append(vertices)
+        return edge_list
+
+    def in_bounds(self, row, col):
+        return (0 <= row < len(self.map)) and (0 <= col < len(self.map[row]))
+
+
+# def get_edge_list(map, rows, cols, NODES):
+#     DELTAS = [(0, -1), (-1, 0), (0, 1), (1, 0)]
+#     edge_list = []
+#     # takes the map and turns into a graph represented by lists.
+#     for i in range(len(map)):
+#         for j in range(len(map[i])):
+#             vertices = []
+#             for delta in DELTAS:
+#                 row = i + delta[0]
+#                 col = j + delta[1]
+#                 if in_bounds(map, row, col):
+#                     vertices.append(NODES[row][col])
+#             edge_list.append(vertices)
+#     return edge_list
+
+
+# def in_bounds(map, row, col):
+#     return (0 <= row < len(map)) and (0 <= col < len(map[row]))
 
 
 
