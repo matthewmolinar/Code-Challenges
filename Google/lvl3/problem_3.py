@@ -88,7 +88,7 @@ class Graph(object):
             print('Adjacents: ' + str(self.graph[i].adjacents) + ' ')
 
     # Dijkstras shortest path, but with some modifications.
-    # Visited list or attributes is not used.
+    # Visited list or attributes is not needed.
     # Relies on bomb_uses instead.
     def dijkstras_shortest(self, source):
         source.distance = 1
