@@ -3,6 +3,6 @@ I'm still working on these. I've gotten to Level Four, but I have not begun it y
 
 
 # Other Challenges Coming Soon
-Project Euler
-LeetCode
-HackerRank
+- Project Euler
+- LeetCode
+- HackerRank
