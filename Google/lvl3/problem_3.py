@@ -117,3 +117,6 @@ def solution(map):
     source = maze.graph[0]
     shortest = maze.dijkstras_shortest(source)
     return shortest
+
+
+print(solution([[0, 0, 0, 0, 0, 0], [1,1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [0,0, 0, 0, 0, 0]]))
